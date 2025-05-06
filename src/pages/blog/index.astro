@@ -12,7 +12,7 @@ const posts_list = await getCollection("blog");
         {
             posts_list.map((post) => (
                 <BlogCard
-                    href={`/blog/${post.id}`}
+                    href={`/blog/${post.id}/`}
                     title={post.data.title}
                     posted_on={post.data.posted_on}
                     description={post.data.description}
