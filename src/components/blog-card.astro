@@ -1,0 +1,46 @@
+---
+import type { CollectionEntry } from "astro:content";
+import FormattedDate from "./formatted-date.astro";
+
+type Props = CollectionEntry<"blog">["data"] & { href: string };
+
+const { title, posted_on, description, href } = Astro.props;
+---
+
+<div class="blog-card">
+    <a href={href} class="blog-card__heading" data-astro-prefetch>{title}</a>
+    <span class="blog-card__description"
+        >Posted on <FormattedDate date={posted_on} /></span
+    >
+    <p class="blog-card__description">
+        {description}
+    </p>
+</div>
+
+<style>
+    .blog-card {
+        display: grid;
+        gap: calc(var(--spacing) * 3);
+    }
+
+    .blog-card__heading {
+        font-size: 2em;
+        font-weight: 700;
+        text-decoration: underline;
+        text-underline-offset: calc(var(--spacing) * 0.75);
+        letter-spacing: -0.03em;
+        color: oklch(from hsl(200, 80%, 42%) calc(l * 0.86) c calc(h * 1.015));
+        text-wrap: pretty;
+    }
+
+    .blog-card__description {
+        font-size: calc(var(--spacing) * 4.5);
+        color: oklch(from var(--color-text) calc(l * 1.2) c h);
+        font-size: 1.12em;
+    }
+
+    .blog-card__heading:active,
+    .blog-card__heading:hover {
+        color: #000;
+    }
+</style>

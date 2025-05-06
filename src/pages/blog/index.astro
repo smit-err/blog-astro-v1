@@ -1,0 +1,31 @@
+---
+import BlogCard from "@components/blog-card.astro";
+import Layout from "@layouts/layout.astro";
+
+import { getCollection } from "astro:content";
+
+const posts_list = await getCollection("blog");
+---
+
+<Layout>
+    <div class="blog_card_container">
+        {
+            posts_list.map((post) => (
+                <BlogCard
+                    href={`/blog/${post.id}`}
+                    title={post.data.title}
+                    posted_on={post.data.posted_on}
+                    description={post.data.description}
+                />
+            ))
+        }
+    </div>
+</Layout>
+
+<style>
+    .blog_card_container {
+        display: grid;
+        gap: calc(var(--spacing) * 10);
+        margin-bottom: calc(var(--spacing) * 12);
+    }
+</style>

@@ -1,0 +1,50 @@
+---
+import HeaderLink from "./header-link.astro";
+---
+
+<header>
+    <nav>
+        <HeaderLink href={"/"} class={"home_link"}
+            >smit_mistry <span>_</span></HeaderLink
+        >
+        <div class="link_group">
+            <HeaderLink href={"/blog"}>Blog</HeaderLink>
+            <HeaderLink href={"/about"}>About</HeaderLink>
+            <HeaderLink href={"/portfolio"}>Portfolio</HeaderLink>
+        </div>
+    </nav>
+</header>
+
+<style>
+    header {
+        padding: calc(var(--spacing) * 5) 0;
+    }
+    .home_link {
+        font-size: 2em;
+        font-weight: 700;
+        letter-spacing: -0.03em;
+    }
+    .home_link span {
+        animation: blink 2s step-end infinite;
+    }
+    @keyframes blink {
+        0%,
+        50% {
+            visibility: visible;
+        }
+        50.01%,
+        100% {
+            visibility: hidden;
+        }
+    }
+    nav {
+        display: grid;
+        gap: calc(var(--spacing) * 3);
+        justify-content: space-between;
+    }
+    .link_group {
+        display: flex;
+        align-items: center;
+        gap: calc(var(--spacing) * 3);
+    }
+</style>

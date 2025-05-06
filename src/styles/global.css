@@ -1,0 +1,11 @@
+@import "./base.css";
+@import "./typography.css";
+
+:root {
+    --spacing: 0.25rem;
+    --color-text: hsl(0, 0%, 13%);
+}
+
+body {
+    padding: 0 calc(var(--spacing) * 4);
+}
